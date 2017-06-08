@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            /*background-color: #0e0eb0;*/
+        }
+    </style>
+</head>
+<body bgcolor="redgreenblue1">
+
+<script>
+
+    var bgColor = document.querySelector('body').getAttribute('bgcolor');
+    //    console.log(bgColor);
+    var xx = bgColor.replace(/[^0-9a-fA-F]/gi, '0');
+    var len = xx.length;
+    var mark = Math.ceil(len / 3) * 3;
+    switch (mark - len) {
+        case 0 :
+            break;
+        case 1 :
+            xx += '0';
+            break;
+        case 2 :
+            xx += '00';
+            break;
+    }
+    console.log(bgColor, xx);
+    var newLen = Math.ceil(len / 3);
+    var i = 0, arr = [];
+    while (i < 3) {
+        arr.push(xx.slice(i * newLen, (i + 1) * newLen).slice(0, 2));
+        i++;
+    }
+    var color = 'rgba(' + arr[0] + ',' + arr[1] + ',' + arr[2] + ')';
+    console.log(color);
+</script>
+</body>
+</html>
